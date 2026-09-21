@@ -1,0 +1,13 @@
+{
+  "name": "startup-scout",
+  "private": true,
+  "type": "module",
+  "description": "Mac mini harness: finds startups worth applying to, scored on growth potential, learning experience, and closeness to LLM training work. Sends a daily email digest, never applies or contacts anyone on your behalf.",
+  "dependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  }
+}
