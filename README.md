@@ -20,6 +20,6 @@ Uses the `claude` CLI on the mini (OAuth, no API key), same pattern as the outre
 a company already surfaced never gets re-surfaced (seen.json) - 30-minute deadline - skips under 400 MB free disk.
 
 ## Env (`~/.startup-scout/env`, chmod 600)
-`RESEND_API_KEY`, `SCOUT_TO_EMAIL` (your address), `SCOUT_FROM_EMAIL` (e.g. `"Startup Scout <scout@calldesk.tech>"`,
+`RESEND_API_KEY`, `SCOUT_TO_EMAIL` (your address), `SCOUT_FROM_EMAIL` (e.g. `"Startup Scout <outreach@calldesk.tech>"`,
 reusing an already-verified domain is fine here — this is a to-self notification, not third-party outreach),
 optional `SCOUT_QUERIES_PER_DAY`, `SCOUT_RESEARCH_LIMIT`, `SCOUT_MIN_OVERALL`, `SCOUT_DEADLINE_MIN`.
