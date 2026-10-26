@@ -4,6 +4,17 @@ import { spawnSync } from 'child_process';
 // `claude` OAuth account — no API key). Same pattern as the outreach harnesses.
 
 export function cliComplete(prompt: string, opts: { tools?: string; maxTurns?: number; timeoutMs?: number } = {}): string {
+  // The mini's ~/.claude-accounts wrapper fails over to the other account on a limit, but its retry cannot re-read a
+  // prompt piped on stdin ("Input must be provided"). The switch has happened by then, so simply run once more.
+  for (let attempt = 0; ; attempt++) {
+    try { return runOnce(prompt, opts); } catch (e) {
+      if (attempt === 0 && e instanceof Error && /Input must be provided/i.test(e.message)) continue;
+      throw e;
+    }
+  }
+}
+
+function runOnce(prompt: string, opts: { tools?: string; maxTurns?: number; timeoutMs?: number }): string {
   const args = ['-p', '--output-format', 'text', '--model', process.env.SCOUT_CLI_MODEL || 'sonnet', '--max-turns', String(opts.maxTurns ?? 3)];
   args.push('--allowedTools', opts.tools ?? 'WebSearch');
 
