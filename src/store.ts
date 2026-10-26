@@ -25,3 +25,4 @@ export function saveSeen(path: string, seen: Map<string, SeenEntry>): void {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, JSON.stringify(Object.fromEntries(seen), null, 1));
 }
+
